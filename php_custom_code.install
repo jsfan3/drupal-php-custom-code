@@ -1,0 +1,78 @@
+<?php
+
+/**
+ * @file
+ * Install, update, and uninstall functions for the PHP Custom Code module.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function php_custom_code_schema() {
+  $schema['php_custom_code'] = [
+    'description' => 'Stores custom PHP code blocks for execution.',
+    'fields' => [
+      'id' => [
+        'description' => 'Primary Key: Unique block ID.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'title' => [
+        'description' => 'A short title for the code block.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'code' => [
+        'description' => 'The PHP code to be executed.',
+        'type' => 'text',
+        'not null' => FALSE,
+      ],
+      'enabled' => [
+        'description' => 'Whether this code block is enabled (1) or disabled (0).',
+        'type' => 'int',
+        'size' => 'tiny',
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+      'global' => [
+        'description' => 'Whether the code block should be executed on all pages (1) or only on specified pages (0).',
+        'type' => 'int',
+        'size' => 'tiny',
+        'not null' => TRUE,
+        'default' => 1,
+      ],
+      'pages' => [
+        'description' => 'A comma-separated list of paths on which to execute the code if not global.',
+        'type' => 'text',
+        'not null' => FALSE,
+      ],
+      'created' => [
+        'description' => 'Timestamp when the block was created.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+      'changed' => [
+        'description' => 'Timestamp when the block was last updated.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+    ],
+    'primary key' => ['id'],
+  ];
+
+  return $schema;
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function php_custom_code_uninstall() {
+  // Remove the custom table.
+  \Drupal::database()->schema()->dropTable('php_custom_code');
+}
+

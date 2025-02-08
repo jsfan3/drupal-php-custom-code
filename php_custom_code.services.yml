@@ -1,0 +1,5 @@
+services:
+  Drupal\php_custom_code\EventSubscriber\PhpCustomCodeSubscriber:
+    tags:
+      - { name: event_subscriber }
+

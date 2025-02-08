@@ -1,0 +1,16 @@
+php_custom_code.settings:
+  path: '/admin/config/system/php-custom-code'
+  defaults:
+    _form: '\Drupal\php_custom_code\Form\PhpCustomCodeSettingsForm'
+    _title: 'PHP Custom Code Blocks'
+  requirements:
+    _permission: 'administer site configuration'
+
+php_custom_code.emergency_disable:
+  path: '/admin/config/system/php-custom-code/emergency-disable'
+  defaults:
+    _controller: '\Drupal\php_custom_code\Controller\EmergencyController::disableAll'
+    _title: 'Emergency Disable PHP Code Blocks'
+  requirements:
+    _permission: 'administer site configuration'
+

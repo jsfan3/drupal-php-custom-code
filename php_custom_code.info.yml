@@ -1,0 +1,6 @@
+name: PHP Custom Code
+type: module
+description: 'Provides an administration interface for adding custom PHP code blocks, which can be executed globally or on specific pages. You can use it in conjunction with https://www.drupal.org/project/php to call a function or method defined in a block within an article. Use with extreme caution!'
+core_version_requirement: ^10
+package: Custom
+
