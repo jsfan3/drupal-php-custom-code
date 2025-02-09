@@ -98,7 +98,7 @@ Navigate to **Configuration → System → PHP Custom Code** to add your PHP cod
     }
   ?>
   ```
-  it will output `HELLO WORLD`.
+  it will output `HELLO WORLD`. *It is important to **check that the function exists before executing it** to avoid errors in case the block of PHP code declaring that function is disabled or removed.*
 
 ### Example 2: Page-Specific Code for Custom Layouts
 - **Scenario:** You want to run some PHP code only on your blog pages to set a special variable.
