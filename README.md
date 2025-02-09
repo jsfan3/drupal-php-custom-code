@@ -93,7 +93,9 @@ Navigate to **Configuration → System → PHP Custom Code** to add your PHP cod
 - **Result:** On every page request, this block is executed during the request event. Therefore, when a PHP text format content (e.g., an article) uses:
   ```php
   <?php
-    echo my_helper_function("hello world");
+    if (function_exists('my_helper_function')) {
+        echo my_helper_function("hello world");
+    }
   ?>
   ```
   it will output `HELLO WORLD`.
