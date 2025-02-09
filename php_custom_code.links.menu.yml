@@ -1,0 +1,7 @@
+php_custom_code.settings:
+  title: 'PHP Custom Code'
+  description: 'Manage PHP custom code blocks.'
+  parent: system.admin_config_system
+  route_name: php_custom_code.settings
+  weight: 100
+
