@@ -55,6 +55,12 @@ Then, require the package using:
 composer require jsfan3/php-custom-code:dev-main
 ```
 
+After that, you can always upgrade the module to the latest version:
+
+```bash
+composer update jsfan3/php-custom-code
+```
+
 ### Enabling the Module
 
 Once the module is downloaded, enable it using Drush or the Drupal Extend UI:
