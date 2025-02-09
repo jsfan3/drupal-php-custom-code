@@ -97,6 +97,12 @@ class PhpCustomCodeSettingsForm extends FormBase {
         '#description' => $this->t('Enter PHP code to be executed. DO NOT include the <?php ?> tags.'),
         '#rows' => 10,
       ];
+      // Add a checkbox to allow deletion of this block.
+      $form['blocks'][$i]['remove'] = [
+        '#type' => 'checkbox',
+        '#title' => $this->t('Delete this block'),
+        '#default_value' => 0,
+      ];
     }
 
     $form['add_block'] = [
@@ -143,7 +149,16 @@ class PhpCustomCodeSettingsForm extends FormBase {
 
     // Process each code block.
     foreach ($blocks as $block) {
-      // Prepare the data to store.
+      // If the block is marked for removal, delete it if exists and skip further processing.
+      if (!empty($block['remove'])) {
+        if (!empty($block['id'])) {
+          $connection->delete('php_custom_code')
+            ->condition('id', $block['id'])
+            ->execute();
+        }
+        continue;
+      }
+
       $data = [
         'title' => $block['title'],
         'code' => $block['code'],
